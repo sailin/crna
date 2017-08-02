@@ -43,44 +43,45 @@ class ProfileScreen extends React.Component {
 //
 // export default App
 
+class Login extends React.Component {
+  render() {
+    return (
+      <View> please log in</View>
+    )
+  }
+
+}
 export default class App extends React.Component {
 
-  Constructor() {
-
+  constructor(props) {
+    super(props);
+    this.state = {isLoggedIn: 0};
   }
 
   render() {
-    // return (
-    //   <View style={styles.container}>
-    //     <FlatList
-    //       data={[
-    //         {key: 'Devin'},
-    //         {key: 'Jackson'},
-    //         {key: 'James'},
-    //         {key: 'Joel'},
-    //         {key: 'John'},
-    //         {key: 'Jillian'},
-    //         {key: 'Jimmy'},
-    //         {key: 'Julie'},
-    //       ]}
-    //       renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-    //     />
-    //   </View>
-    // );
+    if (this.state.isLoggedIn) {
+      return (
+        <View style={styles.container}>
+          <SectionList
+            sections={[
+              {title: 'D', data: ['Devin']},
+              {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
+            ]}
+            renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+            renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          />
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          Please login.
+          <button> Login </button>
+        </View>
+      )
+    }
 
 
-    return (
-      <View style={styles.container}>
-        <SectionList
-          sections={[
-            {title: 'D', data: ['Devin']},
-            {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
-          ]}
-          renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-        />
-      </View>
-    );
 
     // _renderScene(route, navigator)
     // {
