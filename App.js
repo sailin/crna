@@ -7,12 +7,18 @@ import { StyleSheet, Text, View, Button, Alert, FlatList, SectionList, Navigator
 
 export default class App extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {isLoggedIn: 0};
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {isLoggedIn: 0};
+    this.handleLogin = this.handleLogin.bind(this)
+  }
+
+  handleLogin() {
+    this.setState({isLoggedIn : 1})
+  }
 
   render() {
+
     if (this.state.isLoggedIn) {
       return (
         <View style={styles.container}>
@@ -29,28 +35,24 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          Please login.
-          <button> Login </button>
+          <Button
+            onPress={this.handleLogin}
+            title="Please login"
+            color="#841584"
+          />
         </View>
       )
     }
   }
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     padding: 30,
-//   },
-// });
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 22
+    backgroundColor: '#fff',
+    // alignItems: 'center',
+    justifyContent: 'center',
+    padding: 30,
   },
   item: {
     padding: 10,
@@ -66,4 +68,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     backgroundColor: 'rgba(247,247,247,1.0)',
   },
-})
+});
