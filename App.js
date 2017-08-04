@@ -18,7 +18,6 @@ export default class App extends React.Component {
   }
 
   render() {
-
     if (this.state.isLoggedIn) {
       return (
         <View style={styles.container}>
@@ -39,6 +38,7 @@ export default class App extends React.Component {
             onPress={this.handleLogin}
             title="Please login"
             color="#841584"
+            accessibilityLabel="Please login"
           />
         </View>
       )
