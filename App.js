@@ -1,15 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, FlatList, SectionList, Navigator } from 'react-native';
-// import {
-//   StackNavigator,
-// } from 'react-navigation';
+import { StyleSheet, Text, View, Alert, FlatList, SectionList, Navigator } from 'react-native';
+import Button from 'react-native-button';
 
+class Schedule extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View>
+          <Text>China time</Text>
+        </View>
+
+      </View>
+    )
+  }
+
+}
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {isLoggedIn: 0};
+    this.state = {isLoggedIn: 1};
     this.handleLogin = this.handleLogin.bind(this)
   }
 
@@ -19,27 +34,29 @@ export default class App extends React.Component {
 
   render() {
     if (this.state.isLoggedIn) {
-      return (
-        <View style={styles.container}>
-          <SectionList
-            sections={[
-              {title: 'D', data: ['Devin']},
-              {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
-            ]}
-            renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-            renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-          />
-        </View>
-      );
+      return (<Schedule />)
+      // return (
+      //   <View style={styles.container}>
+      //     <SectionList
+      //       sections={[
+      //         {title: 'D', data: ['Devin']},
+      //         {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
+      //       ]}
+      //       renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+      //       renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+      //     />
+      //   </View>
+      // );
     } else {
       return (
         <View style={styles.container}>
           <Button
-            onPress={this.handleLogin}
-            title="Please login"
-            color="#841584"
-            accessibilityLabel="Please login"
-          />
+            containerStyle={{padding:10, height:50, overflow:'hidden', borderRadius:25, backgroundColor: '#aaa'}}
+            style={{fontSize: 20, color: 'white'}}
+            styleDisabled={{color: 'red'}}
+            onPress={this.handleLogin}>
+            Sign in
+          </Button>
         </View>
       )
     }
@@ -49,10 +66,19 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#eee',
     // alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     padding: 30,
+  },
+  section_header: {
+    flex: 1,
+  },
+  section_body: {
+    flex: 2,
+  },
+  section_header: {
+    flex: 4,
   },
   item: {
     padding: 10,
